@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.neuedu.model.po.Emp;
 import com.neuedu.model.po.User;
-import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequestMapping("/test")
@@ -31,7 +31,7 @@ public class TestController {
 	@PostMapping("/login")
 	public String test(String username,String password, HttpSession session)
 	{		
-		//invoke service method to query database
+		//invoke service method to query database.
 		//get userinfo(userid, username...... ), put it into session
 		
 		//getsession by request.getSession();
@@ -50,7 +50,9 @@ public class TestController {
 	{
 		System.out.println(u.getUsername());
 		System.out.println(u.getPassword());
-
+		
+		//the photo we have this is location somewhere in your temparary folder.
+		//put it in D://
 		File destination = new File("/Users/wangsanqi/Downloads/test",photo.getOriginalFilename());
 		try {
 			photo.transferTo(destination); //after transfer to the destination, the temparary file will be deleted automatically.
@@ -58,7 +60,7 @@ public class TestController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		
 		return "/index.jsp";
 	}
 	
